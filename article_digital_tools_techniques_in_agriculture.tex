@@ -1,0 +1,475 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=0.85in,left=1in,footskip=0.75in,marginparwidth=2in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+% use Unicode characters - try changing the option if you run into troubles with special characters (e.g. umlauts)
+\usepackage[utf8]{inputenc}
+
+% clean citations
+\usepackage{cite}
+
+% hyperref makes references clicky. use \url{www.example.com} or \href{www.example.com}{description} to add a clicky url
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% % improves typesetting in LaTeX
+% \usepackage{microtype}
+% \DisableLigatures[f]{encoding = *, family = * }
+
+% % text layout - change as needed
+% \raggedright
+% \setlength{\parindent}{0.5cm}
+% \textwidth 6.50in % \textwidth 5.25in
+% \textheight 8.75in % \textheight 8.75in
+
+% use adjustwidth environment to exceed text width (see examples in text)
+\usepackage{changepage}
+
+% adjust caption style
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,singlelinecheck=off]{caption}
+
+% remove brackets from references
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+% % headrule, footrule and page numbers
+% \usepackage{lastpage,fancyhdr,graphicx}
+% \usepackage{epstopdf}
+% \pagestyle{myheadings}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rfoot{\thepage/\pageref{LastPage}}
+% \renewcommand{\footrule}{\hrule height 1pt \vspace{2mm}}
+% \fancyheadoffset[L]{2.25in}
+% \fancyfootoffset[L]{2.25in}
+
+% use \textcolor{color}{text} for colored text (e.g. highlight to-do areas)
+\usepackage{color}
+
+% define custom colors (this one is for figure captions)
+\definecolor{Gray}{gray}{.25}
+
+% this is required to include graphics
+\usepackage{graphicx}
+
+% use if you want to put caption to the side of the figure - see example in text
+\usepackage{sidecap}
+
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
+\usepackage{bm} % for supporting bold math fonts
+\usepackage{siunitx}
+\usepackage{moreverb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+
+% use for have text wrap around figures
+\usepackage{wrapfig}
+\usepackage[pscoord]{eso-pic}
+\usepackage[fulladjust]{marginnote}
+\reversemarginpar
+
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{tikz} % required for image opacity change
+\usepackage[absolute,overlay]{textpos} % for text formatting
+\usepackage{chemfig}
+
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\sisetup{per-mode=symbol}
+
+% this is to sort and place the reference in nice order
+\DeclareRobustCommand{\firstsecond}[2]{#2}
+
+% \bibliographystyle{plainnat}
+% \usepackage[numbers]{natbib}
+
+% Added by CII
+% \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption} # don't use bf
+\usepackage[format=hang,margin=0.5cm,justification=centering]{caption}
+\captionsetup{font=small,width=0.9\linewidth,labelfont=small,textfont={small}}
+% End of CII addition
+
+\usepackage{subcaption}
+% \newcommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
+
+% \captionsetup[sub]{font=footnotesize}
+\captionsetup[subfigure]{font=small,labelfont=small,textfont=small}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Digital Tools and Techniques in Agriculture: Extensibility, Institutional Learning, and Prospects for Nepal},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Digital Tools and Techniques in Agriculture: Extensibility, Institutional Learning, and Prospects for Nepal}
+\author{Deependra Dhakal\footnote{Agriculture and Forestry University, Chitwan, Nepal; Email: \url{ddhaka@afu.edu.np}}, Hari Paneru\footnote{Agriculture Knowledge Center, Kanchanpur, MoLMAC, Sudurpaschim Province, Nepal}}
+\date{2025-12-25}
+
+\begin{document}
+\maketitle
+
+\section{Digital Technologies in Agriculture: Scope and Functional Domains}\label{digital-technologies-in-agriculture-scope-and-functional-domains}
+
+In the agricultural context, digital technologies refer to hardware--software assemblages that enable systematic data generation, transmission, processing, and decision support across farming operations. These include, but are not limited to:
+
+\begin{itemize}
+\tightlist
+\item
+  Sensing systems (remote sensing, UAVs, soil sensors),
+\item
+  Positioning and navigation tools (GPS-enabled machinery),
+\item
+  Data platforms (farm management systems, GIS),
+\item
+  Communication interfaces (mobile applications, dashboards),
+\item
+  Analytical engines (statistical models, machine learning algorithms).
+\end{itemize}
+
+Unlike conventional mechanization, digital tools are not single-purpose artifacts. They operate as platform technologies, capable of incremental upgrades, modular replacement, and cross-domain integration. A drone platform, for instance, can be successively repurposed---from acreage estimation to crop stress detection to insurance verification---without replacing the underlying system.
+
+This platform character fundamentally distinguishes digital technologies from earlier generations of agricultural interventions that were often rigid, capital-intensive, and context-specific.
+
+\section{From Episodic Adoption to Cumulative Digital Transformation}\label{from-episodic-adoption-to-cumulative-digital-transformation}
+
+The integration of digital tools into agriculture is no longer a question of novelty but of institutional maturity and cumulative learning. Across the globe, agriculture is transitioning from labor- and experience-intensive systems toward data-mediated, sensor-driven, and algorithmically assisted production systems. This transition is not defined merely by the introduction of new tools, but by their continued refinement, contextual adaptation, and systemic embedding within production, governance, and market ecosystems.
+
+In Nepal, however, the historical trajectory of agricultural technology adoption has often followed a different pattern: trial, partial diffusion, abandonment, and eventual replacement by another externally promoted innovation. This pattern has affected not only mechanical tools but also irrigation schemes, seed systems, and extension models. The present article argues that digital technologies --- if understood as extensible infrastructures rather than fixed interventions --- offer an opportunity to break this cycle. Their success, however, hinges on institutional readiness, domain-specific digital literacy, and robust system design.
+
+\section{Institutional and Policy Landscape for Digital Agriculture in Nepal}\label{institutional-and-policy-landscape-for-digital-agriculture-in-nepal}
+
+Nepal's policy environment for information and communication technology (ICT) has evolved steadily over the past three decades. Liberalization of telecommunications through the National Communication Policy (1992), the Telecommunication Act (1996), and subsequent regulations created the physical backbone for digital connectivity. Later IT policies (2000, 2010) framed digital tools as instruments of socio-economic development.
+
+More recent frameworks---including the Digital Nepal Framework (2019), the ICT Policy (2015), cybersecurity bylaws (2020), and the establishment of the National Cyber Security Center---signal a growing recognition of digital infrastructure as critical national infrastructure, not merely an auxiliary service. National Cyber Security Policy, 2023 aims to build a resilient cyberspace and improve Nepal's global cyber security ranking.
+
+From an agricultural perspective, this policy environment is permissive and flexible enough to allow technological introgression, pilot projects, and donor-supported experimentation. What remains weak, however, is the institutional capacity to sustain, scale, and iteratively improve these systems once introduced.
+
+\section{Institutional Fragility and Lessons from Infrastructure Failures}\label{institutional-fragility-and-lessons-from-infrastructure-failures}
+
+Nepal's development history offers several cautionary examples where infrastructure projects delivered limited public value due to weak system design and poor operational embedding. Large-scale irrigation schemes such as the \emph{Sikta Irrigation Project} and \emph{Bheri--Babai Diversion Project}, despite substantial capital investment, have faced chronic issues of underutilization, maintenance failure, and mismatch with local agronomic realities. Similar critiques have been raised regarding rural road expansion, where connectivity increased but economic integration lagged.
+
+These failures are not merely financial or administrative; they reflect a deeper problem of non-extensible system design. As articulated in classical systems engineering and organizational theory (Simon 2019; Meadows 2008), robust systems are characterized by modularity, feedback loops, adaptability, and learning capacity. Systems that lack these properties tend to collapse when initial assumptions no longer hold.
+
+Digital infrastructures, by contrast, are inherently modular, upgradable, and reversible. Software systems can be patched, sensors recalibrated, and workflows redesigned. However, this technical flexibility does not automatically translate into operational success. Effective use of digital tools in agriculture requires maneuverability, which is imparted not by hardware alone but by understanding of underlying theory, data semantics, and system behavior. Hence, domain-specific digital literacy -- for agronomists, extension workers, planners, and farmers -- is indispensable.
+
+\section{Relevance of Digital Technologies to Nepalese Agriculture}\label{relevance-of-digital-technologies-to-nepalese-agriculture}
+
+\subsection{Mechanization, precision, and smallholder compatibility}\label{mechanization-precision-and-smallholder-compatibility}
+
+Nepal's agricultural landscape is dominated by smallholder farms operating under fragmented landholdings and heterogeneous agro-ecologies. While heavy mechanization faces structural constraints, scale-appropriate tools---such as mini-tillers---have already demonstrated productivity gains even in hill systems (Paudel et al. 2019). When augmented with basic digital components (GPS guidance, field mapping), these tools form the entry point to precision agriculture. The idea being that, digital augmentation does require full mechanization. Even low-powered machinery or manual operations can benefit from digital overlays such as spatial referencing, task logging, and decision support.
+
+\subsection{Digital governance, interoperability, and service delivery}\label{digital-governance-interoperability-and-service-delivery}
+
+Digital infrastructures facilitate horizontal and vertical integration across agricultural value chains and governance tiers. Interoperable systems allow data collected at the farm level to inform municipal planning, provincial aggregation, and national policy formulation without repeated manual handling.
+
+E-governance platforms---already in use for G2C, G2G, and G2E interactions---introduce:
+
+\begin{itemize}
+\tightlist
+\item
+  Standardized validation rules,
+\item
+  Reduced discretionary power,
+\item
+  Lower transaction latency,
+\item
+  Traceable decision pathways.
+\end{itemize}
+
+In agriculture, this translates into faster subsidy disbursement, transparent beneficiary selection, and real-time monitoring of program implementation. Low-latency service delivery also enables adaptive management. For instance, a pest outbreak reported digitally from multiple wards can trigger immediate extension advisories, rather than post-season assessments.
+
+\subsection{Continuous monitoring, forecasting, and risk management}\label{continuous-monitoring-forecasting-and-risk-management}
+
+Digital crop monitoring systems enable continuous observation of crop growth, stress, and variability. When integrated with historical production records and market information, these systems support more rational decisions regarding crop choice, storage, marketing, and insurance.
+
+For agricultural insurance, for example, an enterprise or cooperative can use time-series yield estimates derived from remote sensing to:
+
+\begin{itemize}
+\tightlist
+\item
+  Assess historical yield volatility,
+\item
+  Classify risk zones spatially,
+\item
+  Select insurance products aligned with actual exposure,
+\item
+  Reduce moral hazard and dispute frequency.
+\end{itemize}
+
+Such data-driven underwriting is already common in index-based insurance schemes globally and is directly applicable to Nepal's emerging agri-insurance sector.
+
+\subsection{Improving information reliability in yield estimation}\label{improving-information-reliability-in-yield-estimation}
+
+\subsubsection{Current limitations}\label{current-limitations}
+
+Estimation of crop yield constitutes a major function of national agricultural governing body. Estimation combined with aggregation and reporting of nation/sub-national/local level production and yield data serves as a quantitative evidence to inform decision-making for agricultural policy and programs.
+
+National yield estimation traditionally relies on crop-cutting experiments (CCE) and farmer recall surveys. While CCEs are considered statistically rigorous, their reliability is contingent upon:
+
+\begin{itemize}
+\tightlist
+\item
+  Sampling frame completeness,
+\item
+  Randomization integrity,
+\item
+  Enumerator competence,
+\item
+  Temporal alignment with harvest.
+\end{itemize}
+
+In Nepal, proper sampling design and standardized implementation protocols are not consistently institutionalized across districts and provinces. As a result, reported yield figures often differ across government agencies and between governmental and non-governmental organizations, a phenomenon widely documented in developing-country contexts. For example, a national media outlet underlined the discripancy in per capita consumption statistic of milk, meat and egg in 2017 report produced by two Nepal Rastra Bank and Ministry of Livestock Development (Editors 2017).
+
+When yield is inferred from secondary information -- expert opinion, market arrivals, or anecdotal assessments -- the epistemic basis becomes even weaker (Baumeister, Vohs, and Funder 2007). The grounds for inference are often undocumented, rendering estimates non-reproducible and disputed.
+
+\subsubsection{A statistical framework for national crop yield estimation using district-stratified crop-cut surveys}\label{a-statistical-framework-for-national-crop-yield-estimation-using-district-stratified-crop-cut-surveys}
+
+Crop yield estimation in Nepal is commonly implemented using a stratified multi-stage sampling design, where districts constitute the primary strata. This choice is operationally pragmatic, as districts represent the lowest administrative unit at which routine agricultural statistics are aggregated and reported, and they often capture broad agro-ecological and management variability.
+
+Let:
+
+\begin{itemize}
+\tightlist
+\item
+  \(s = 1, 2, \dots, S\) index the districts (strata),
+\item
+  \(A_s\) denote the total cultivated area (ha) of a given crop in district (\(s\)),
+\item
+  \(n_s\) denote the number of crop-cut plots sampled in district (\(s\)),
+\item
+  \(y_{si}\) denote the observed yield (e.g., \(kg~ha^{-1}\)), standardized to a reference moisture level) from the (\(i^{th}\)) crop-cut plot in district (\(s\)).
+\end{itemize}
+
+The district-level mean yield estimator is:
+
+\[
+\hat{\bar{Y}}*s = \frac{1}{n_s} \sum*{i=1}^{n_s} y_{si}
+\]
+
+The national mean yield is obtained as an area-weighted aggregation of district-level estimates:
+
+\[
+\hat{\bar{Y}} = \frac{\sum_{s=1}^{S} A_s \hat{\bar{Y}}*s}{\sum*{s=1}^{S} A_s}
+\]
+
+Accordingly, the estimated national crop production (\(\hat{P}\)) is expressed as:
+
+\[
+\hat{P} = \sum_{s=1}^{S} A_s \hat{\bar{Y}}_s
+\]
+
+This estimator assigns greater influence to districts with larger cropped areas while preserving inter-district yield heterogeneity. Its statistical validity relies on the representativeness of crop-cut plots within each district, strict adherence to randomization protocols, and consistency in harvest and moisture-adjustment procedures.
+
+Under Nepal's federal governance structure, this district-stratified framework can be naturally extended to incorporate municipalities and wards as successive sampling stages, without altering the unbiasedness of the estimator.
+
+\subsubsection{Digital assistance as an epistemic corrective}\label{digital-assistance-as-an-epistemic-corrective}
+
+Digital tools offer a pathway to reduce subjectivity and behavioral bias in yield estimation. Remote sensing, UAV imagery, and automated data pipelines introduce observer-independent measurements that can be repeatedly validated against ground truth. Rather than replacing crop-cut surveys, digital systems can constrain and calibrate them, narrowing uncertainty bounds. In this paradigm:
+
+\begin{itemize}
+\tightlist
+\item
+  Crop cuts provide calibration anchors,
+\item
+  Aerial imagery provides spatial completeness,
+\item
+  Statistical models provide consistency,
+\item
+  Human judgment shifts from estimation to interpretation.
+\end{itemize}
+
+Such hybrid systems are increasingly recognized as best practice in agricultural statistics.
+
+\subsubsection{Arial imaging systems as survey multipliers}\label{arial-imaging-systems-as-survey-multipliers}
+
+Although direct assessment of yield is always possible, which is often cost-prohibitive, investigators can now refer to more revealing components that are scientifically shown be correlated with the yield. An example approach is using the drone based imaging that collects information on field attributes such as crop density, height, weed density, etc. in terms of spectral emissions, which ultimately can be used to calculate net productivity of the region of interest. This can be used, after validation through on-field crop cut survey, for comparison across wide area.
+
+While it is cumbersome, costly and slow process to gather physically the samples and make measurements on those, the estimates of field level variation based on crop cut assessment is extremely information-sparse (Pp. 419 of Gomez and Gomez 1984). Precision agriculture applications typically require spatial resolutions of 1-3 m (Sozzi et al. 2018), a threshold easily met by consumer-grade drones.
+
+Rather than producing information-sparse snapshots, UAV-based systems generate dense spatial fields of observation, allowing detection of yield gradients, stress hotspots, and management inconsistencies. Studies have demonstrated their utility, in conjunction with widespread connectivity and fast data processing and analysis pipelines, in yield prediction (Wang et al. 2023), disease assessment (Bai et al. 2023; Guo et al. 2021), and real-time field diagnostics (Tripicchio et al. 2015).
+
+Such use can be accomplished with an inexpensive, off-the-shelf, consumer-grade drone with a standard RGB (red, green, and blue) camera. A standard RGB camera may also be called a natural-color or true-color camera and will produce images similar to a digital point-and-shoot camera or smartphone camera.
+
+Incidentally, both of our adjoining neighbor countries have presented themselves in the forefront of commercial drone manufacturing and marketing (Shenzhen DJI Sciences and Technologies Ltd. 2023) and applications exploration. With recent surges in drone start-ups in India, the country is expected to dominate agriculture drone market with cheap and affordable hardware (Pathak et al. 2020; Hill 2018), few years from now.
+
+\subsection{Use of public-domain data for crop suitability mapping}\label{use-of-public-domain-data-for-crop-suitability-mapping}
+
+Although intensive crop-cut sampling provides reliable point estimates within the limits of its sampling design, its applicability depends on adherence to protocol and adequate sample coverage. In the digital era yield and cropping environments' suitability assessment can increasingly rely on integrated spatial inference, where soil, topography, climate, and vegetation indices jointly inform productivity potential.
+
+The wealth of geographical and remotely sensed data publicly available, nowadays, can serve as a starting point in making informed decisions about scientific land management (Huang et al. 2018). With the focus of all three tiers of government on scientific land mapping for various purposes, identification of crop pockets will assist in agriculture production planning and mechanization. Farmholds and local planners benefit by having a concrete visual map of what focus is to be laid where. Moreover, this data driven information support system can help identify most profitable ventures, while tapping geographical comparative advantage.
+
+Dhakal (2024) used publicly available (from NARC Nepal as raster layers) soil from from 23,273 soils samples, collected from 56 districts covering seven provinces which were combined with a stack of 168 remote sensing-based soil covariates (SRTM DEM derivatives, climatic images, vegetation index etc.). Later the spatial predictions on 250x250m grids were generated using a machine learning method and the random forest. Thematic soil data on percentage Nitrogen content (PNC) and absolute pH value (pH) and elevation (EL) data layers were acquired for processing, supplemented with satellite based land use data (obtained from openly sourced OpenStreetMaps database) representing cultivated, residential and water bodies Figure \ref{fig:crop-map-tikapur} crop suitability map of multiple crops (as indicated in legend entries) in each of 58 grid pockets of Tikapur, Kailali, Nepal were created.
+
+Benefits from such approach is thanks to its ability to reduce dependence on subjective appraisal, enable transparent replication, support localized planning, scale naturally across administrative units. Furthermore, when combined with crop seasonality and agro-climatic variables, these maps become powerful decision-support tools for both farmers and planners.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{./tikapur_crop_suitability_simple_annotate_geometry} 
+
+}
+
+\caption{Crop suitability map showing depiction of crops with points scaled proportionate to their suitability rank.}\label{fig:crop-map-tikapur}
+\end{figure}
+
+\section{Way Forward}\label{way-forward}
+
+Digital technologies offer Nepalese agriculture a rare opportunity to move beyond episodic intervention toward cumulative, learning-oriented transformation. Their inherent extensibility aligns well with Nepal's ecological diversity and institutional fluidity. However, realizing this potential requires more than hardware deployment. It demands robust system design, institutional commitment to continuous research, domain-specific digital literacy, and integration of digital tools with scientific and statistical rigor. Without these, digital agriculture risks becoming yet another cycle of enthusiasm and abandonment.
+
+\section*{Bibliography}\label{bibliography}
+\addcontentsline{toc}{section}{Bibliography}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-bai2023rice}
+Bai, Xiaodong, Pichao Liu, Zhiguo Cao, Hao Lu, Haipeng Xiong, Aiping Yang, Zhe Cai, Jianjun Wang, and Jianguo Yao. 2023. {``Rice Plant Counting, Locating, and Sizing Method Based on High-Throughput UAV RGB Images.''} \emph{Plant Phenomics} 5: 0020.
+
+\bibitem[\citeproctext]{ref-baumeister2007psychology}
+Baumeister, Roy F, Kathleen D Vohs, and David C Funder. 2007. {``Psychology as the Science of Self-Reports and Finger Movements: Whatever Happened to Actual Behavior?''} \emph{Perspectives on Psychological Science} 2 (4): 396--403.
+
+\bibitem[\citeproctext]{ref-dhakal2024gridded}
+Dhakal, Deependra. 2024. {``Gridded Multi-Crop Suitability Mapping Using Public Domain Soil and Related Thematic Data.''}
+
+\bibitem[\citeproctext]{ref-DataDiscrepancyCreates2017}
+Editors, The Kathmandu Post. 2017. {``Data Discrepancy Creates Confusion.''} http://kathmandupost.com/money/2017/12/13/data-discrepancy-creates-confusion.
+
+\bibitem[\citeproctext]{ref-gomez1984statistical}
+Gomez, Kwanchai A, and Arturo A Gomez. 1984. \emph{Statistical Procedures for Agricultural Research}. John wiley \& sons.
+
+\bibitem[\citeproctext]{ref-guo2021uas}
+Guo, Wei, Matthew E Carroll, Arti Singh, Tyson L Swetnam, Nirav Merchant, Soumik Sarkar, Asheesh K Singh, and Baskar Ganapathysubramanian. 2021. {``UAS-Based Plant Phenotyping for Research and Breeding Applications.''} \emph{Plant Phenomics}.
+
+\bibitem[\citeproctext]{ref-droneapplication2018}
+Hill, Peter. 2018. {``Drone Spraying and Spreading Becoming Reality.''} \emph{Future Farming}. \url{https://www.futurefarming.com/tech-in-focus/drones/drone-spraying-and-spreading-becoming-reality/?intcmp=related-content}.
+
+\bibitem[\citeproctext]{ref-huang2018agricultural}
+Huang, Yanbo, Zhong-xin Chen, YU Tao, Xiang-zhi Huang, and Xing-fa Gu. 2018. {``Agricultural Remote Sensing Big Data: Management and Applications.''} \emph{Journal of Integrative Agriculture} 17 (9): 1915--31.
+
+\bibitem[\citeproctext]{ref-meadows2008thinking}
+Meadows, Donella. 2008. \emph{Thinking in Systems: International Bestseller}. chelsea green publishing.
+
+\bibitem[\citeproctext]{ref-pathak2020use}
+Pathak, H, G Kumar, SD Mohapatra, BB Gaikwad, and J Rane. 2020. {``Use of Drones in Agriculture: Potentials, Problems and Policy Needs.''} \emph{ICAR-National Institute of Abiotic Stress Management}, 4--5.
+
+\bibitem[\citeproctext]{ref-paudel2019scale}
+Paudel, Gokul P, Dilli Bahadur Kc, Scott E Justice, Andrew J McDonald, et al. 2019. {``Scale-Appropriate Mechanization Impacts on Productivity Among Smallholders: Evidence from Rice Systems in the Mid-Hills of Nepal.''} \emph{Land Use Policy} 85: 104--13.
+
+\bibitem[\citeproctext]{ref-djiweb2023}
+Shenzhen DJI Sciences and Technologies Ltd. 2023. {``DJI - Official Website.''} \url{https://www.dji.com/global}.
+
+\bibitem[\citeproctext]{ref-simon2019sciences}
+Simon, Herbert A. 2019. \emph{The Sciences of the Artificial, Reissue of the Third Edition with a New Introduction by John Laird}. MIT press.
+
+\bibitem[\citeproctext]{ref-sozzi2018benchmark}
+Sozzi, Marco, Francesco Marinello, Andrea Pezzuolo, and Luigi Sartori. 2018. {``Benchmark of Satellites Image Services for Precision Agricultural Use.''} In \emph{Proceedings of the AgEng Conference, Wageningen, the Netherlands}, 8--11. \url{http://hdl.handle.net/11577/3272211}.
+
+\bibitem[\citeproctext]{ref-tripicchio2015towards}
+Tripicchio, Paolo, Massimo Satler, Giacomo Dabisias, Emanuele Ruffaldi, and Carlo Alberto Avizzano. 2015. {``Towards Smart Farming and Sustainable Agriculture with Drones.''} In \emph{2015 International Conference on Intelligent Environments}, 140--43. {IEEE}.
+
+\bibitem[\citeproctext]{ref-wang2023drone}
+Wang, Haozhou, Tang Li, Erika Nishida, Yoichiro Kato, Yuya Fukano, and Wei Guo. 2023. {``Drone-Based Harvest Data Prediction Can Reduce on-Farm Food Loss and Improve Farmer Income.''} \emph{Plant Phenomics} 5: 0086.
+
+\end{CSLReferences}
+
+\end{document}
