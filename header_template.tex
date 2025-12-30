@@ -1,9 +1,7 @@
 
-% use Unicode characters - try changing the option if you run into troubles with special characters (e.g. umlauts)
-\usepackage[utf8]{inputenc}
-
-% clean citations
-\usepackage{cite}
+% % use Unicode characters - try changing the option if you run into troubles with special characters (e.g. umlauts)
+% \usepackage[utf8]{inputenc}
+\usepackage{fontspec}
 
 % hyperref makes references clicky. use \url{www.example.com} or \href{www.example.com}{description} to add a clicky url
 \usepackage{nameref,hyperref}
@@ -11,37 +9,11 @@
 % line numbers
 \usepackage[right]{lineno}
 
-% % improves typesetting in LaTeX
-% \usepackage{microtype}
-% \DisableLigatures[f]{encoding = *, family = * }
-
-% % text layout - change as needed
-% \raggedright
-% \setlength{\parindent}{0.5cm}
-% \textwidth 6.50in % \textwidth 5.25in
-% \textheight 8.75in % \textheight 8.75in
-
 % use adjustwidth environment to exceed text width (see examples in text)
 \usepackage{changepage}
 
 % adjust caption style
 \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,singlelinecheck=off]{caption}
-
-% remove brackets from references
-\makeatletter
-\renewcommand{\@biblabel}[1]{\quad#1.}
-\makeatother
-
-% % headrule, footrule and page numbers
-% \usepackage{lastpage,fancyhdr,graphicx}
-% \usepackage{epstopdf}
-% \pagestyle{myheadings}
-% \pagestyle{fancy}
-% \fancyhf{}
-% \rfoot{\thepage/\pageref{LastPage}}
-% \renewcommand{\footrule}{\hrule height 1pt \vspace{2mm}}
-% \fancyheadoffset[L]{2.25in}
-% \fancyfootoffset[L]{2.25in}
 
 % use \textcolor{color}{text} for colored text (e.g. highlight to-do areas)
 \usepackage{color}
@@ -85,15 +57,16 @@
 \usepackage[absolute,overlay]{textpos} % for text formatting
 \usepackage{chemfig}
 
-\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
-T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \sisetup{per-mode=symbol}
 
-% this is to sort and place the reference in nice order
-\DeclareRobustCommand{\firstsecond}[2]{#2}
+% properly format quotes, hyphenations, dates, etc.
+\usepackage{csquotes}
+\usepackage[american]{babel}
 
-% \bibliographystyle{plainnat}
-% \usepackage[numbers]{natbib}
+% Citation and referencing
+\usepackage[style=apa,backend=biber,sorting=nyt]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+
 
 % Added by CII
 % \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption} # don't use bf
